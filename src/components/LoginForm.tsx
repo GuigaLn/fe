@@ -1,9 +1,12 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { signIn } from 'next-auth/react';
 
+import toast from 'react-hot-toast';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -18,6 +21,8 @@ const schema = z.object({
 });
 
 export default function LoginForm() {
+  const router = useRouter();
+
   const {
     handleSubmit: hookFormHandleSubmit,
     register,
@@ -25,11 +30,18 @@ export default function LoginForm() {
   } = useForm<z.infer<typeof schema>>({ resolver: zodResolver(schema) });
 
   const handleSubmit = hookFormHandleSubmit(async (data) => {
-    try {
-      console.log(data)
-    } catch (error) {
-      //toast.error('Ocorreu um erro ao realizar o login!')
+    const response = await signIn('credentials', {
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    });
+
+    if(response?.ok) {
+      router.push('/dashboard')
+      return;
     }
+
+    return toast.error('Credenciais inválidas!');
   });
 
   return (
@@ -55,6 +67,7 @@ export default function LoginForm() {
               <Label htmlFor="password">Senha</Label>
               <Input
                 id="password"
+                type='password'
                 placeholder="Senha"
                 error={errors.password?.message}
                 {...register('password')}

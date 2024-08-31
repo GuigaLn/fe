@@ -1,4 +1,4 @@
-import { PATH_API } from "@/app/shared/constants/PathsAPI";
+import { PATH_API } from "@/app/shared/constants/pathsAPI";
 import { httpClient } from "../httpClient";
 
 export interface SignInParams {
@@ -7,7 +7,12 @@ export interface SignInParams {
 }
 
 interface SigninResponse {
-  accessToken: string;
+  success: boolean;
+  data: {
+    id: string;
+    name: string;
+    token: string;
+  }
 }
 
 export async function signin(params: SignInParams) {
