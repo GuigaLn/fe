@@ -1,4 +1,4 @@
-import { PATH_API } from "@/app/shared/constants/PathsAPI";
+import { PATH_API } from "@/app/shared/constants/pathsAPI";
 import { httpClient } from "../httpClient";
 
 export interface SignupParams {
@@ -8,7 +8,10 @@ export interface SignupParams {
 }
 
 interface SignupResponse {
-  accessToken: string;
+  success: boolean;
+  data: {
+    message: string;
+  }
 }
 
 export async function signup(params: SignupParams) {
