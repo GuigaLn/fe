@@ -7,12 +7,12 @@ import toast from 'react-hot-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from 'react-query';
 import { authService } from '@/app/services/authService';
+import { APP_PATHS } from '@/app/shared/constants/app-paths';
 
 import { Button } from "@/components/ui/button";
 import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
 
 const schema = z.object({
   name: z.string()
@@ -60,7 +60,7 @@ export default function SignUpForm() {
   });
 
   const navigateToSignIn = () => {
-    router.push('/auth/sign-in')
+    router.push(APP_PATHS.public.sign_in);
   }
 
   return (

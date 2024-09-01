@@ -5,10 +5,11 @@ import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signIn } from 'next-auth/react';
+import { APP_PATHS } from '@/app/shared/constants/app-paths';
 
 import toast from 'react-hot-toast';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -36,8 +37,8 @@ export default function SignInForm() {
       redirect: false,
     });
 
-    if(response?.ok) {
-      router.push('/dashboard')
+    if (response?.ok) {
+      router.push(APP_PATHS.private.dashboard);
       return;
     }
 
@@ -45,7 +46,7 @@ export default function SignInForm() {
   });
 
   const navigateToSignUp = () => {
-    router.push('/auth/sign-up')
+    router.push(APP_PATHS.public.sign_up);
   }
 
   return (
