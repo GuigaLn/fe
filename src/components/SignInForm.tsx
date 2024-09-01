@@ -20,7 +20,7 @@ const schema = z.object({
     .min(6, 'Senha deve conter no minímo 06 digítos'),
 });
 
-export default function LoginForm() {
+export default function SignInForm() {
   const router = useRouter();
 
   const {
