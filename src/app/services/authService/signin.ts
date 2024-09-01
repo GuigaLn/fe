@@ -1,4 +1,4 @@
-import { PATH_API } from "@/app/shared/constants/pathsAPI";
+import { API_PATHS } from "@/app/shared/constants/api-paths";
 import { httpClient } from "../httpClient";
 
 export interface SignInParams {
@@ -16,7 +16,7 @@ interface SigninResponse {
 }
 
 export async function signin(params: SignInParams) {
-  const { data } = await httpClient.post<SigninResponse>(`${PATH_API.MICRO_AUTH}/sign-in`, params);
+  const { data } = await httpClient.post<SigninResponse>(`${API_PATHS.MICRO_AUTH}/sign-in`, params);
 
   return data;
 }
