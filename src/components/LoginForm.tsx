@@ -44,8 +44,12 @@ export default function LoginForm() {
     return toast.error('Credenciais inválidas!');
   });
 
+  const navigateToSignUp = () => {
+    router.push('/sign-up')
+  }
+
   return (
-    <Card className="w-[350px]">
+    <div className="w-full max-w-96">
       <CardHeader>
         <CardTitle>Login</CardTitle>
         <CardDescription>Realize seu login</CardDescription>
@@ -74,12 +78,13 @@ export default function LoginForm() {
               />
             </div>
 
-            <div className="flex flex-col space-y-1.5">
+            <div className="flex flex-col space-y-5">
               <Button type="submit">Login</Button>
+              <Button type="button" variant="ghost" onClick={navigateToSignUp}>Cadastrar-se</Button>
             </div>
           </div>
         </form>
       </CardContent>
-    </Card>
+    </div>
   )
 }
