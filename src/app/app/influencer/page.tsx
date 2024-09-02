@@ -6,7 +6,7 @@ export default async function InfluencerPage() {
 
   return (
     <div>
-      <DataTableInfluencers influencer={[]} />
+      <DataTableInfluencers influencer={influencer} />
     </div>
   );
 }
