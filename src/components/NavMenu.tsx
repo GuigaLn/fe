@@ -19,13 +19,13 @@ import { HamburgerMenuIcon, ExitIcon } from "@radix-ui/react-icons"
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Influenciadores",
-    href: "/influencers",
+    href: "/app/influencer",
     description:
       "Visualize todos os influenciadores",
   },
   {
     title: "Marcas",
-    href: "/brands",
+    href: "/app/brand",
     description:
       "Visualize todas as marcas",
   },
@@ -35,6 +35,7 @@ export function NavMenu() {
   const handleLogout = () => {
     signOut();
   }
+
   return (
     <div className="flex w-full p-4 justify-between">
       <NavigationMenu>
@@ -58,7 +59,7 @@ export function NavMenu() {
         </NavigationMenuList>
       </NavigationMenu>
 
-      <Button variant="outline" size="icon">
+      <Button variant="outline" size="icon" onClick={handleLogout}>
         <ExitIcon className="h-4 w-4" />
       </Button>
     </div>
