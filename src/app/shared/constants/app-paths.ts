@@ -1,6 +1,6 @@
 export const APP_PATHS = {
   private: {
-    dashboard: '/dashboard'
+    dashboard: '/app/dashboard'
   },
   public: {
     sign_in: '/auth/sign-in',
